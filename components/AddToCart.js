@@ -15,10 +15,10 @@ const ADD_TO_CART_MUTATION = gql`
 const AddToCart = ({ id }) => {
   const [addToCart, { loading }] = useMutation(ADD_TO_CART_MUTATION, {
     variables: { id },
-    refetchQueries: [{ query: CURRENT_USER_QUERY }]
+    refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
   return (
-    <button disable={loading} onClick={addToCart}>
+    <button disabled={loading} onClick={addToCart}>
       Add{loading && "ing"} to Cart 🛒
     </button>
   );
