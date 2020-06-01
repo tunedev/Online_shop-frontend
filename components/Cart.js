@@ -5,10 +5,11 @@ import CartStyles from "./styles/CartStyles";
 import User from "./User";
 import Supreme from "./styles/Supreme";
 import CloseButton from "./styles/CloseButton";
-import SickButton from "./styles/SickButton";
 import CartItem from "./CartItem";
 import calcTotalPrice from "../lib/calcTotalPrice";
 import formatMoney from "../lib/formatMoney";
+import Checkout from "./Checkout";
+import SickButton from "./styles/SickButton";
 
 export const LOCAL_STATE_QUERY = gql`
   query {
@@ -50,7 +51,9 @@ const Cart = () => {
             </ul>
             <footer>
               <p>{formatMoney(calcTotalPrice(cart))}</p>
-              <SickButton>Checkout</SickButton>
+              <Checkout>
+                <SickButton>Checkout</SickButton>
+              </Checkout>
             </footer>
           </CartStyles>
         );
