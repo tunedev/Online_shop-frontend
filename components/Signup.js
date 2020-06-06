@@ -5,7 +5,7 @@ import Error from "./ErrorMessage";
 import Form from "./styles/Form";
 import { CURRENT_USER_QUERY } from "./User";
 
-const SIGNUP_MUTATION = gql`
+export const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
     $email: String!
     $name: String!
@@ -20,24 +20,24 @@ const SIGNUP_MUTATION = gql`
 `;
 
 const Signup = () => {
-  const [state, setState] = useState({ email: "", name: "", password: "" });
+  const [state, setState] = useState({ name: "", password: "", email: "" });
   const [signup, { loading, error }] = useMutation(SIGNUP_MUTATION, {
     variables: state,
-    refetchQueries: [{ query: CURRENT_USER_QUERY }]
+    refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
-  const saveToState = event => {
+  const saveToState = (event) => {
     const { name, value } = event.target;
-    setState(state => ({
+    setState((state) => ({
       ...state,
-      [name]: value
+      [name]: value,
     }));
   };
   return (
     <div>
       <Form
         method="POST"
-        onSubmit={async e => {
+        onSubmit={async (e) => {
           e.preventDefault();
           const res = await signup();
           setState({ name: "", password: "", email: "" });

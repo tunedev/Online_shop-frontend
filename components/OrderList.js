@@ -52,7 +52,7 @@ const OrderList = () => {
                 <div className="order-meta">
                   <p>{order.items.reduce((a, b) => a + b.quantity, 0)} Items</p>
                   <p>{order.items.length} Products</p>
-                  <p>{Moment(order.createdAt).fromNow()}</p>
+                  <p>{Moment(order.createdAt).fromNow(true)}</p>
                   <p>{formatMoney(order.total)}</p>
                 </div>
                 <div className="images">

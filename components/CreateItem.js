@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import Router from "next/router";
 import ErrorMessage from "./ErrorMessage";
 import Form from "./styles/Form";
-import formatMoney from "../lib/formatMoney";
-import Item from "./styles/ItemStyles";
 
 export const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
@@ -33,12 +31,9 @@ const CreateItem = () => {
     description: "",
     price: 0,
   });
-  // const [description, setDescription] = useState(
-  //   "Its a customized ps4 pad, play with style"
-  // );
+
   const [image, setImage] = useState("");
   const [largeImage, setLargeImage] = useState("");
-  // const [price, setPrice] = useState(1000);
   const [createItem, { loading, error }] = useMutation(CREATE_ITEM_MUTATION);
 
   const handleChange = (event) => {
@@ -71,6 +66,7 @@ const CreateItem = () => {
     <div>
       {
         <Form
+          data-test="form"
           onSubmit={async (event) => {
             event.preventDefault();
             // Stop form from submitting
@@ -107,8 +103,8 @@ const CreateItem = () => {
                 name="title"
                 placeholder="Title"
                 required
-                value={title}
                 onChange={handleChange}
+                value={title}
               />
             </label>
             <label htmlFor="price">
@@ -119,8 +115,8 @@ const CreateItem = () => {
                 name="price"
                 placeholder="Price"
                 required
-                value={price}
                 onChange={handleChange}
+                value={price}
               />
             </label>
             <label htmlFor="description">
@@ -130,8 +126,8 @@ const CreateItem = () => {
                 name="description"
                 placeholder="Description"
                 required
-                value={description}
                 onChange={handleChange}
+                value={description}
               />
             </label>
             <button type="submit">Submit</button>

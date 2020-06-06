@@ -10,7 +10,7 @@ import ErrorMessage from "./ErrorMessage";
 const SingleItemStyles = Styled.div`
   max-width: 1200px;
   margin: 2rem auto;
-  box-shadow: ${props => props.theme.bs};
+  box-shadow: ${(props) => props.theme.bs};
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
@@ -26,7 +26,7 @@ const SingleItemStyles = Styled.div`
   }
 `;
 
-const SINGLE_ITEM_QUERY = gql`
+export const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
     item(where: { id: $id }) {
       id
@@ -39,7 +39,7 @@ const SINGLE_ITEM_QUERY = gql`
 
 const SingleItem = ({ id }) => {
   const { error, data, loading } = useQuery(SINGLE_ITEM_QUERY, {
-    variables: { id }
+    variables: { id },
   });
   if (error) return <ErrorMessage error={error} />;
   if (loading) return <p>Loading...</p>;
@@ -49,10 +49,10 @@ const SingleItem = ({ id }) => {
   const { item } = data;
   return (
     <div>
+      <Head>
+        <title>Sick Fits! | {item.title}</title>
+      </Head>
       <SingleItemStyles>
-        <Head>
-          <title>Sick Fits! | {item.title}</title>
-        </Head>
         <img src={item.largeImage} alt={item.title} />
         <div className="details">
           <h2>Viewing {item.title}</h2>
