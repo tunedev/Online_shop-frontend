@@ -19,21 +19,21 @@ const Signin = () => {
   const [state, setState] = useState({ email: "", password: "" });
   const [signin, { loading, error }] = useMutation(SIGNIN_MUTATION, {
     variables: state,
-    refetchQueries: [{ query: CURRENT_USER_QUERY }]
+    refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
-  const saveToState = event => {
+  const saveToState = (event) => {
     const { name, value } = event.target;
-    setState(state => ({
+    setState((state) => ({
       ...state,
-      [name]: value
+      [name]: value,
     }));
   };
   return (
     <div>
       <Form
         method="POST"
-        onSubmit={async e => {
+        onSubmit={async (e) => {
           e.preventDefault();
           await signin();
           setState({ password: "", email: "" });
@@ -47,7 +47,7 @@ const Signin = () => {
             <input
               type="email"
               name="email"
-              plaeholder="enter your email here"
+              placeholder="enter your email here"
               value={state.email}
               onChange={saveToState}
             />
@@ -57,7 +57,7 @@ const Signin = () => {
             <input
               type="password"
               name="password"
-              plaeholder="enter your password here"
+              placeholder="enter your password here"
               value={state.password}
               onChange={saveToState}
             />

@@ -10,6 +10,9 @@ export const CURRENT_USER_QUERY = gql`
       email
       name
       permission
+      orders {
+        id
+      }
       cart {
         id
         quantity
@@ -26,7 +29,8 @@ export const CURRENT_USER_QUERY = gql`
 `;
 
 const User = (props) => {
-  const { data } = useQuery(CURRENT_USER_QUERY);
+  const { data, loading } = useQuery(CURRENT_USER_QUERY);
+  if (loading) return null;
   return <div {...props}>{props.children(data)}</div>;
 };
 

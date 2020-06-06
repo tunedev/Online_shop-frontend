@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Styled from "styled-components";
 import { CURRENT_USER_QUERY } from "./User";
 
-const REMOVE_FROM_CART_MUTATION = gql`
+export const REMOVE_FROM_CART_MUTATION = gql`
   mutation REMOVE_FROM_CART_MUTATION($id: ID!) {
     removeFromCart(id: $id) {
       id
@@ -18,7 +18,7 @@ font-size: 3rem;
 background: none;
 border: none; 
 &:hover {
-  color: ${(props) => props.theme.red};
+  color: ${(props) => props.theme.primary};
   cursor: pointer
 }
 `;
