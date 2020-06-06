@@ -25,7 +25,7 @@ const Logo = styled.h1`
   transform: skew(-7deg);
   a {
     padding: 0.5rem 1rem;
-    background: ${(props) => props.theme.red};
+    background: ${(props) => props.theme.primary};
     color: white;
     text-decoration: none;
     text-transform: uppercase;
@@ -39,11 +39,11 @@ const Logo = styled.h1`
 const StyledHeader = styled.header`
   .bar {
     border-bottom: 10px solid ${(props) => props.theme.black};
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
     justify-content: space-between;
     align-items: stretch;
     @media (max-width: 1300px) {
+      display: grid;
       grid-template-columns: 1fr;
       justify-content: center;
     }
@@ -60,7 +60,7 @@ const Header = () => (
     <div className="bar">
       <Logo>
         <Link href="/">
-          <a>Sick fits</a>
+          <a>Shop-online</a>
         </Link>
       </Logo>
       <Nav />
