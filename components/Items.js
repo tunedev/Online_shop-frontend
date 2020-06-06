@@ -30,16 +30,20 @@ const ItemsList = Styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 60px;
-  max-width: ${props => props.theme.maxWidth};
+  max-width: ${(props) => props.theme.maxWidth};
   margin: 0 auto;
+  @media (max-width: 850px) {
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+  }
 `;
 
 const Items = ({ page }) => {
   const { data, error, loading } = useQuery(ALL_ITEMS_QUERY, {
     variables: {
       skip: page * perPage - perPage,
-      first: 4
-    }
+      first: 4,
+    },
   });
 
   if (loading) return <p>Loading ...</p>;
@@ -50,7 +54,7 @@ const Items = ({ page }) => {
       <Pagination page={page} />
       <div>
         <ItemsList>
-          {data.items.map(item => (
+          {data.items.map((item) => (
             <Item key={item.id} item={item} />
           ))}
         </ItemsList>
