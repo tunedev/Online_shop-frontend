@@ -70,8 +70,8 @@ describe("<AddToCart/>", () => {
     );
     await wait();
     wrapper.update();
-    expect(wrapper.text()).toContain("Add to Cart 🛒");
+    expect(wrapper.text()).toContain("Add to Cart 🚀");
     wrapper.find("button").simulate("click");
-    expect(wrapper.text()).toContain("Adding to Cart 🛒");
+    expect(wrapper.text()).toContain("Adding to Cart 🚀");
   });
 });
