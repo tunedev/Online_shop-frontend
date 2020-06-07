@@ -19,17 +19,13 @@ const Item = ({ item }) => (
     <PriceTag>{formatMoney(item.price)}</PriceTag>
     <p>{item.description}</p>
     <div className="buttonList">
-      <Link href={{ pathname: "/update", query: { id: item.id } }}>
-        <a>Edit ✏️</a>
-      </Link>
       <AddToCart id={item.id} />
-      <DeleteItem id={item.id}>Delete this item</DeleteItem>
     </div>
   </ItemStyles>
 );
 
 Item.propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
 };
 
 export default Item;

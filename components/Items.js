@@ -28,13 +28,14 @@ const Center = Styled.div`
 
 const ItemsList = Styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 60px;
   max-width: ${(props) => props.theme.maxWidth};
   margin: 0 auto;
   @media (max-width: 850px) {
-    grid-template-columns: 1fr;
-    grid-gap: 30px;
+    min-width: 95%;
+    
+    grid-gap: 20px;
   }
 `;
 

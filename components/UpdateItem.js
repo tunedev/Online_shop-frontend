@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import PropTypes from "prop-types";
-
 import Router from "next/router";
 import ErrorMessage from "./ErrorMessage";
 import Form from "./styles/Form";
 import formatMoney from "../lib/formatMoney";
-import Item from "./styles/ItemStyles";
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
@@ -43,18 +41,18 @@ export const UPDATE_ITEM_MUTATION = gql`
 
 const UpdateItem = ({ id }) => {
   const { data, loading } = useQuery(SINGLE_ITEM_QUERY, {
-    variables: { id }
+    variables: { id },
   });
 
   const [state, setState] = useState({});
   const [updateItem, updateItemObject] = useMutation(UPDATE_ITEM_MUTATION, {
-    variables: state
+    variables: state,
   });
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, type, value } = event.target;
     const val = type === "number" ? parseInt(value, 10) : value;
-    setState(state => ({ ...state, [name]: val }));
+    setState((state) => ({ ...state, [name]: val }));
   };
 
   const handleItemUpdate = async (event, updateItemMutation) => {
@@ -64,8 +62,8 @@ const UpdateItem = ({ id }) => {
     const res = await updateItemMutation({
       variables: {
         id,
-        ...state
-      }
+        ...state,
+      },
     });
     console.log("updated!!");
     console.log(res);
@@ -77,7 +75,7 @@ const UpdateItem = ({ id }) => {
   return (
     <div>
       {
-        <Form onSubmit={event => handleItemUpdate(event, updateItem)}>
+        <Form onSubmit={(event) => handleItemUpdate(event, updateItem)}>
           <ErrorMessage error={updateItemObject.error} />
           <fieldset
             disabled={updateItemObject.loading}
@@ -129,7 +127,7 @@ const UpdateItem = ({ id }) => {
 };
 
 UpdateItem.propTypes = {
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
 };
 
 export default UpdateItem;

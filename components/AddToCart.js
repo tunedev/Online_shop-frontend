@@ -2,6 +2,7 @@ import React from "react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { CURRENT_USER_QUERY } from "./User";
+import SickButton from "./styles/SickButton";
 
 export const ADD_TO_CART_MUTATION = gql`
   mutation ADD_TO_CART_MUTATION($id: ID!) {
@@ -18,9 +19,9 @@ const AddToCart = ({ id }) => {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
   return (
-    <button disabled={loading} onClick={addToCart}>
-      Add{loading && "ing"} to Cart 🛒
-    </button>
+    <SickButton disabled={loading} onClick={addToCart}>
+      Add{loading && "ing"} to Cart 🚀
+    </SickButton>
   );
 };
 
