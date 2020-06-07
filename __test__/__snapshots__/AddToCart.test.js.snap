@@ -2,10 +2,11 @@
 
 exports[`<AddToCart/> renders and matches snapshot 1`] = `
 <button
+  className="SickButton-l04z44-0 dUIGwv"
   disabled={false}
   onClick={[Function]}
 >
   Add
-   to Cart 🛒
+   to Cart 🚀
 </button>
 `;

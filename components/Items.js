@@ -43,7 +43,7 @@ const Items = ({ page }) => {
   const { data, error, loading } = useQuery(ALL_ITEMS_QUERY, {
     variables: {
       skip: page * perPage - perPage,
-      first: 4,
+      first: perPage,
     },
   });
 

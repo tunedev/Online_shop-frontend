@@ -40,9 +40,7 @@ describe("<Item/>", () => {
   it("renders the button list properly", () => {
     const wrapper = shallow(<ItemComponent item={itemData} />);
     const buttonList = wrapper.find(".buttonList");
-    expect(buttonList.children()).toHaveLength(3);
-    expect(buttonList.find("Link")).toHaveLength(1);
+    expect(buttonList.children()).toHaveLength(1);
     expect(buttonList.find("AddToCart").exists()).toBe(true);
-    expect(buttonList.find("DeleteItem").exists()).toBe(true);
   });
 });
