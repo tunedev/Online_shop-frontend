@@ -40,7 +40,7 @@ exports[`<Pagination/> renders pagination for 20 items 1`] = `
     <span
       className="totalPages"
     >
-      5
+      4
     </span>
   </p>
   <p>
