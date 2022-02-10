@@ -58,7 +58,7 @@
     "install-peers": "^1.0.3",
     "jest": "^25.1.0",
     "jest-transform-graphql": "^2.1.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "sass": "^1.26.6",
     "utf-8-validate": "^5.0.2"
   },
